@@ -4,6 +4,8 @@ import { useState } from "react";
 import { AiOutlineClose } from 'react-icons/ai';
 import { TbReload } from 'react-icons/tb';
 import { GoDotFill } from 'react-icons/go';
+import { IoMdArrowDropup } from 'react-icons/io';
+import Container from "@/components/Container";
 
 export default function Home() {
   const [showBreakingNewsTitle, setShowBreakingNewsTitle] = useState(true)
@@ -21,75 +23,91 @@ export default function Home() {
     { id: 3, time: "11:04 AM", news: "एशियन गेम्स में भारत की पुरुष हॉकी टीम ने उज्बेकिस्तान को 16-0 से हराया" },
   ]
 
+  const titleWithImage = [
+    { id: 1, text: "LIVE:  राघव-परिणीति की शादी, संगीत में थिरके 'दूल्हा-दुल्हन', सामने आई पहली तस्वीर", link: "/abc", image: "https://akm-img-a-in.tosshub.com/sites/visualstory/wp/2023/09/wicketkeeper-helmet-catch.jpg?size=120:68" },
+    { id: 2, text: " मैदान पर तूफान मचाने आ रहा द्रविड़ का बेटा, इस टीम में हुआ सेलेक्शन ", link: "/abc", image: "https://akm-img-a-in.tosshub.com/sites/visualstory/wp/2023/09/wicketkeeper-helmet-catch.jpg?size=120:68" },
+    { id: 3, text: "रिपीट हुई 'हम दिल दे चुके सनम' की स्टोरी, पति ने पत्नी को प्रेमी संग किया विदा", link: "/abc", image: "https://akm-img-a-in.tosshub.com/sites/visualstory/wp/2023/09/wicketkeeper-helmet-catch.jpg?size=120:68" },
+    { id: 4, text: "निज्जर की हत्या के बाद खालिस्तानी तत्वों को सावधान कर रहा FBI! न्यूज रिपोर्ट में दावा", link: "/abc", image: "https://akm-img-a-in.tosshub.com/sites/visualstory/wp/2023/09/wicketkeeper-helmet-catch.jpg?size=120:68" },
+  ]
+
   return (
     <>
+      <Container>
 
-      { // Breaking News
-        showBreakingNewsTitle &&
-        <div className="flex justify-between items-center bg-red-600 text-white rounded-3xl px-4 py-1 m-4 cursor-pointer font-semibold">
-          <div>
-            <span className="italic">BREAKING NEWS</span>
-            <span className="border border-r mx-2"></span>
-            <span>राज्यसभा में भी महिला आरक्षण विधेयक पारित, महिला सांसदों ने PM मोदी के साथ मनाया जश्न</span>
+        { // Breaking News
+          showBreakingNewsTitle &&
+          <div className="flex justify-between text-xs md:text-base items-center bg-red-600 text-white rounded-3xl px-4 py-1 m-2 md:m-4 cursor-pointer font-semibold">
+            <div>
+              <span className="italic">BREAKING NEWS</span>
+              <span className="border border-r mx-2"></span>
+              <span>राज्यसभा में भी महिला आरक्षण विधेयक पारित, महिला सांसदों ने PM मोदी के साथ मनाया जश्न</span>
+            </div>
+            <div className="text-lg ml-1">
+              <AiOutlineClose onClick={() => setShowBreakingNewsTitle(false)} size={20} />
+            </div>
           </div>
-          <AiOutlineClose onClick={() => setShowBreakingNewsTitle(false)} size={20} />
-        </div>
-      }
+        }
 
-      <div className="grid grid-cols-1 md:grid-cols-12">  {/*This is main Grid = Total Grid is 4*/}
+        <div className="grid grid-cols-1 md:grid-cols-12 m-3">  {/*This is main Grid = Total Grid is 4*/}
 
-        <div className="col-span-1 md:col-span-3"> {/*This Grid 1 */}
-          <h1>सबूत सौंपने की बात आई तो पैंतरेबाजी पर उतरे ट्रूडो, बोले- कनाडा ने कई सप्ताह पहले भारत को दिए थे साक्ष्य</h1>
-          <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202309/justin_trudeau-sixteen_nine.png?size=948:533" alt="Test Image" />
-          <p>कनाडा के प्रधानमंत्री जस्टिन ट्रूडो भारत को सबूत पेश करने के मामले पैंतरेबाजी कर रहे हैं. ट्रूडो ने अब कहा है कि कनाडा ने "कई सप्ताह पहले" भारत के साथ...</p>
-        </div>
-
-        <div className="col-span-1 md:col-span-4"> {/*This Grid 2 */}
-          <div className="space-y-5">
-            <Tile1 />
-            <Tile1 />
-            <Tile1 />
+          <div className="col-span-1 md:col-span-3"> {/*This Grid 1 */}
+            <h1 className="font-semibold text-lg">सबूत सौंपने की बात आई तो पैंतरेबाजी पर उतरे ट्रूडो, बोले- कनाडा ने कई सप्ताह पहले भारत को दिए थे साक्ष्य</h1>
+            <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202309/justin_trudeau-sixteen_nine.png?size=948:533" alt="Test Image" />
+            <p>कनाडा के प्रधानमंत्री जस्टिन ट्रूडो भारत को सबूत पेश करने के मामले पैंतरेबाजी कर रहे हैं. ट्रूडो ने अब कहा है कि कनाडा ने "कई सप्ताह पहले" भारत के साथ...</p>
           </div>
-        </div>
 
-        <div className="col-span-1 md:col-span-2 space-y-4"> {/*This Grid 3 */}
-          {
-            textNewsData?.map((item) => (
-              <div key={item.id} className="text-sm">
-                <TextNews text={item?.text} />
-                <p className="border-b border-gray-300"></p>
-              </div>
-            ))
-          }
-
-        </div>
-
-        <div className="col-span-1 md:col-span-3 mx-2"> {/*This Grid 4 */}
-          <div className="flex justify-between">
-            <h1 className="font-semibold">लाइव अपडेट</h1>
-            <TbReload />
+          <div className="col-span-1 md:col-span-4"> {/*This Grid 2 */}
+            <Title title={"ख़बरें"} />
+            <div className="">
+              {
+                titleWithImage?.map((item) => (
+                  <Tile1 text={item.text} image={item.image} link={item.link} />
+                ))
+              }
+            </div>
           </div>
-          <div>
+
+          <div className="col-span-1 md:col-span-2 "> {/*This Grid 3 */}
+            <Title title={"बड़ी ख़बरें"} />
             {
-              liveUpdate?.map((item) => (
-                <div key={item.id} className="text-sm">
-                  <LiveUpdates time={item.time} news={item?.news} />
+              textNewsData?.map((item) => (
+                <div key={item.id} className="text-sm my-2 cursor-pointer text-gray-600 hover:text-gray-900 hover:underline">
+                  <TextNews text={item?.text} />
+                  <p className="border-b border-gray-300 pt-3"></p>
                 </div>
               ))
             }
+
+          </div>
+
+          <div className="col-span-1 md:col-span-3 mx-2"> {/*This Grid 4 */}
+            <div className="flex justify-between">
+              <Title title={"लाइव अपडेट"} />
+              <TbReload />
+            </div>
+            <div>
+              {
+                liveUpdate?.map((item) => (
+                  <div key={item.id} className="text-sm">
+                    <LiveUpdates time={item.time} news={item?.news} />
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
-      </div>
+      </Container>
     </>
   )
 }
 
 
 const TextNews = ({ text, link, type }) => {
+  const truncatedText = text.length > 100 ? `${text.slice(0, 70)}...` : text;
   return (
     <>
       <div>
-        {text}
+        {truncatedText}
       </div>
     </>
   )
@@ -107,6 +125,18 @@ const LiveUpdates = ({ news, link, time }) => {
           <p className="m-2 px-2 border-l border-gray-300 text-sm text-gray-600 hover:text-gray-800 hover:font-semibold  cursor-pointer">{news}</p>
         </div>
 
+      </div>
+    </>
+  )
+}
+
+const Title = ({ title }) => {
+
+  return (
+    <>
+      <div className="flex items-center">
+        <IoMdArrowDropup size={30} color="sky" />
+        <p className="font-semibold">{title}</p>
       </div>
     </>
   )

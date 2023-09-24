@@ -1,11 +1,12 @@
 import React from 'react'
 
-const Tile1 = () => {
+const Tile1 = ({ image, text, link }) => {
+  const truncatedText = text.length > 60 ? `${text.slice(0, 70)}` : text;
     return (
         <>
-            <div className='flex items-center m-3'>
-                <img className='h-16 w-32 border' src="https://akm-img-a-in.tosshub.com/sites/visualstory/wp/2023/09/wicketkeeper-helmet-catch.jpg?size=120:68" alt="Test Image" srcset="" />
-                <p className='w-64 text-lg mx-4 font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+            <div className='flex items-center m-2 cursor-pointer hover:bg-gray-100'>
+                <img className='h-16 w-32 border' src={image} alt="Test Image" srcset="" />
+                <p className='w-full text-lg text-gray-800 mx-4 font-semibold'>{truncatedText}</p>
             </div>
 
         </>
