@@ -21,7 +21,7 @@ const SingleNews = ({ params }) => {
     return (
         <>
             <Container>
-                <div className='grid grid-cols-12 my-5'>
+                <div className='grid grid-cols-1 md:grid-cols-12 my-5'>
 
                     <div className='col-span-9'>
 
