@@ -3,8 +3,6 @@ import Tile1 from "@/components/tiles/Tile1";
 import { useState } from "react";
 import { AiOutlineClose } from 'react-icons/ai';
 import { TbReload } from 'react-icons/tb';
-import { GoDotFill } from 'react-icons/go';
-import { IoMdArrowDropup } from 'react-icons/io';
 import Container from "@/components/Container";
 import { Roboto } from "next/font/google";
 import Image from "next/image";
@@ -38,10 +36,10 @@ export default function Home() {
   ]
 
   const titleWithImage = [
-    { id: 1, link: "/news/34wewr/wer32", text: "LIVE:  राघव-परिणीति की शादी, संगीत में थिरके 'दूल्हा-दुल्हन', सामने आई पहली तस्वीर", image: "https://akm-img-a-in.tosshub.com/sites/visualstory/wp/2023/09/wicketkeeper-helmet-catch.jpg?size=120:68" },
-    { id: 2, link: "/news/34wewr/wer32", text: "मैदान पर तूफान मचाने आ रहा द्रविड़ का बेटा, इस टीम में हुआ सेलेक्शन ", image: "https://akm-img-a-in.tosshub.com/sites/visualstory/wp/2023/09/wicketkeeper-helmet-catch.jpg?size=120:68" },
-    { id: 3, link: "/news/34wewr/wer32", text: "रिपीट हुई 'हम दिल दे चुके सनम' की स्टोरी, पति ने पत्नी को प्रेमी संग किया विदा", image: "https://akm-img-a-in.tosshub.com/sites/visualstory/wp/2023/09/wicketkeeper-helmet-catch.jpg?size=120:68" },
-    { id: 4, link: "/news/34wewr/wer32", text: "निज्जर की हत्या के बाद खालिस्तानी तत्वों को सावधान कर रहा FBI! न्यूज रिपोर्ट में दावा", image: "https://akm-img-a-in.tosshub.com/sites/visualstory/wp/2023/09/wicketkeeper-helmet-catch.jpg?size=120:68" },
+    { id: 1, link: "/news/34wewr/wer32", text: "LIVE:  राघव-परिणीति की शादी, संगीत में थिरके 'दूल्हा-दुल्हन', सामने आई पहली तस्वीर", image: "https://picsum.photos/id/331/200/100" },
+    { id: 2, link: "/news/34wewr/wer32", text: "मैदान पर तूफान मचाने आ रहा द्रविड़ का बेटा, इस टीम में हुआ सेलेक्शन ", image: "https://picsum.photos/id/222/200/100" },
+    { id: 3, link: "/news/34wewr/wer32", text: "रिपीट हुई 'हम दिल दे चुके सनम' की स्टोरी, पति ने पत्नी को प्रेमी संग किया विदा", image: "https://picsum.photos/id/555/200/100" },
+    { id: 4, link: "/news/34wewr/wer32", text: "निज्जर की हत्या के बाद खालिस्तानी तत्वों को सावधान कर रहा FBI! न्यूज रिपोर्ट में दावा", image: "https://picsum.photos/id/666/200/100" },
   ]
 
   return (
@@ -50,14 +48,14 @@ export default function Home() {
 
         { // Breaking News
           showBreakingNewsTitle &&
-          <div className="flex justify-between text-xs md:text-base items-center bg-red-600 text-white rounded-3xl px-4 py-1 m-2 md:m-4 cursor-pointer font-semibold">
+          <div className="flex justify-between text-[10px] md:text-base items-center bg-red-600 text-white rounded-3xl px-4 py-1 m-1 md:m-4 cursor-pointer font-semibold">
             <div>
               <span className="italic">BREAKING NEWS</span>
               <span className="border border-r mx-2"></span>
               <span>राज्यसभा में भी महिला आरक्षण विधेयक पारित, महिला सांसदों ने PM मोदी के साथ मनाया जश्न</span>
             </div>
             <div className="text-lg ml-1">
-              <AiOutlineClose onClick={() => setShowBreakingNewsTitle(false)} size={20} />
+              <AiOutlineClose onClick={() => setShowBreakingNewsTitle(false)} className="text-md md:text-lg" />
             </div>
           </div>
         }
@@ -97,7 +95,7 @@ export default function Home() {
           <div className="col-span-1 md:col-span-3 mx-2"> {/*This Grid 4 */}
             <div className="flex justify-between">
               <Title title={"लाइव अपडेट"} />
-              <TbReload />
+              <TbReload className="cursor-pointer active:text-red-400 hover:bg-gray-200 rounded-full" />
             </div>
             <div>
               {

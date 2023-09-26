@@ -17,9 +17,9 @@ const Tile1 = ({ image, text, link }) => {
     const truncatedText = text.length > 60 ? `${text.slice(0, 70)}` : text;
     return (
         <>
-            <div onClick={() => route.push(link)} className='flex items-center w-full m-2 cursor-pointer hover:bg-gray-100'>
+            <div onClick={() => route.push(link)} className='flex items-start w-full m-2 cursor-pointer hover:bg-gray-100'>
                 <img className='h-16 w-32 border' src={image} alt="Test Image" srcset="" />
-                <p className={` ${notoSans.className} w-full text-lg text-gray-800 mx-4 font-semibold`}>{truncatedText}</p>
+                <p className={` ${notoSans.className} w-full text-md text-gray-800 mx-4 font-semibold`}>{truncatedText}</p>
             </div>
 
         </>
