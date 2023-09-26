@@ -5,6 +5,9 @@ import Title from '@/components/Titile'
 import Tile1 from '@/components/tiles/Tile1'
 import Image from 'next/image'
 import React from 'react'
+import { BiLike, BiCommentDetail, BiShareAlt } from 'react-icons/bi'
+import { FaWhatsapp } from 'react-icons/fa'
+import { CiMenuKebab } from 'react-icons/ci'
 
 const SingleNews = ({ params }) => {
 
@@ -32,6 +35,19 @@ const SingleNews = ({ params }) => {
                             height={1000}
                             src={"https://akm-img-a-in.tosshub.com/aajtak/images/story/202309/28ae2a5f-9096-4856-9d9e-f964ce2c83e4-sixteen_nine_0.jpg"}
                         />
+                        <div className='flex justify-between items-center mb-5 p-2 border-b bg-sky-50'>
+                            <div>
+                                <p>रवीश पाल सिंह</p>
+                                <p>भोपाल,25 सितंबर 2023,(अपडेटेड 25 सितंबर 2023, 9:40 PM IST) </p>
+                            </div>
+                            <div className='flex space-x-8'>
+                                <BiLike size={20} />
+                                <BiCommentDetail size={20} />
+                                <FaWhatsapp size={20} />
+                                <BiShareAlt size={20} />
+                                <CiMenuKebab size={20} />
+                            </div>
+                        </div>
                         <div className="space-y-5 text-[20px]">
                             <p className="text-align-justify">मध्य प्रदेश विधानसभा चुनाव के लिए भारतीय जनता पार्टी ने 39 उम्मीदवारों की दूसरी लिस्ट जारी की है. केंद्रीय मंत्री&nbsp;नरेंद्र सिंह तोमर को भी विधानसभा चुनाव का टिकट दिया गया है. वह दिमनी सीट से चुनाव लड़ेंगे.&nbsp;इन 39 उम्मीदवारों में कई सांसद भी शामिल हैं.&nbsp;वहीं, तीन केंद्रीय मंत्रियों को भी चुनावी मैदान में उतारा गया है.</p>
 
