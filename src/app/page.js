@@ -65,7 +65,7 @@ export default function Home() {
           <div className="col-span-1 md:col-span-3"> {/*This Grid 1 */}
             <h1 className={` ${roboto.className} font-semibold text-lg`}>सबूत सौंपने की बात आई तो पैंतरेबाजी पर उतरे ट्रूडो, बोले- कनाडा ने कई सप्ताह पहले भारत को दिए थे साक्ष्य</h1>
             <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202309/justin_trudeau-sixteen_nine.png?size=948:533" alt="Test Image" />
-            <p>कनाडा के प्रधानमंत्री जस्टिन ट्रूडो भारत को सबूत पेश करने के मामले पैंतरेबाजी कर रहे हैं. ट्रूडो ने अब कहा है कि कनाडा ने "कई सप्ताह पहले" भारत के साथ...</p>
+            <p>कनाडा के प्रधानमंत्री जस्टिन ट्रूडो भारत को सबूत पेश करने के मामले पैंतरेबाजी कर रहे हैं. ट्रूडो ने अब कहा है कि कनाडा ने कई सप्ताह पहले भारत के साथ...</p>
           </div>
 
           <div className="col-span-1 md:col-span-4"> {/*This Grid 2 */}
@@ -73,7 +73,7 @@ export default function Home() {
             <div className="">
               {
                 titleWithImage?.map((item) => (
-                  <Tile1 text={item.text} image={item.image} link={item.link} />
+                  <Tile1 key={item.id} text={item.text} image={item.image} link={item.link} />
                 ))
               }
             </div>

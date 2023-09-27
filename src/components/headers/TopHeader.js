@@ -27,7 +27,7 @@ const TopHeader = () => {
                         <div className='flex text-xs my-3 mx-3 font-medium space-x-5 whitespace-nowrap'>
                             {
                                 data?.map((item) => {
-                                    return <p className='cursor-pointer hover:text-black'>{item.text}</p>
+                                    return <p key={item.id} className='cursor-pointer hover:text-black'>{item.text}</p>
                                 })
                             }
                         </div>
