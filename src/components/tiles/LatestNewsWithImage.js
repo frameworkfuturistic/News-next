@@ -22,15 +22,15 @@ const LatestNewsWithImage = ({ image, text, link }) => {
     const route = useRouter()
 
 
-    const truncatedText = (text) => text.length > 60 ? `${text.slice(0, 70)}` : text;
+    const truncatedText = (text) => text.length > 60 ? `${text.slice(0, 50)}` : text;
     return (
         <>
             {
                 data?.map((item, index) => (
 
-                    <div key={index} onClick={() => route.push(item.link)} className='flex items-start w-full m-2 cursor-pointer hover:bg-gray-100'>
+                    <div key={index} onClick={() => route.push(item.link)} className='flex items-start w-full mt-0 m-2 cursor-pointer hover:bg-gray-100'>
                         <img className='h-16 w-32 border' src={item.image} alt="Test Image" srcset="" />
-                        <p className={` ${notoSans.className} w-full text-md text-gray-800 mx-4 font-semibold`}>{truncatedText(item?.text)}</p>
+                        <p className={` ${notoSans.className} w-full text-md text-gray-800 mx-1`}>{truncatedText(item?.text)}</p>
                     </div>
                 ))
             }
