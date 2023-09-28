@@ -117,16 +117,16 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="col-span-1 md:col-span-3 p-5">
-              <VideoWithText image="https://picsum.photos/id/554/200/100" text={"वर्ल्डकप 2023 में होगी पैसों की बरसात, ICC ने किया प्राइजमनी का ऐलान"} />
-              <VideoWithText image="https://picsum.photos/id/524/200/100" text={"करीमा बलोच हत्याकांड को लेकर क्यों उठे जस्टीन ट्रूडो पर सवाल? देखें"} />
+              <VideoWithText image="https://picsum.photos/id/554/2000/1000" text={"वर्ल्डकप 2023 में होगी पैसों की बरसात, ICC ने किया प्राइजमनी का ऐलान"} />
+              <VideoWithText image="https://picsum.photos/id/524/2000/1000" text={"करीमा बलोच हत्याकांड को लेकर क्यों उठे जस्टीन ट्रूडो पर सवाल? देखें"} />
 
             </div>
             <div className="col-span-1 md:col-span-6 p-5  border-r-gray-800 border-l-gray-600">
-              <VideoWithText image="https://picsum.photos/id/324/200/100" text={"Indian Cricket team as Avengers रोहित, विराट के एवेंजर अवतार की वर्ल्डकप में आंधी? देखें सो सॉरी"} />
+              <VideoWithText image="https://picsum.photos/id/324/2000/1000" text={"Indian Cricket team as Avengers रोहित, विराट के एवेंजर अवतार की वर्ल्डकप में आंधी? देखें सो सॉरी"} />
             </div>
             <div className="col-span-1 md:col-span-3 p-5">
-              <VideoWithText image="https://picsum.photos/id/645/200/100" text={"इस AI टेक्नोलॉजी से फुटबॉल के खेल में आएगा क्रांतिकारी बदलाव"} />
-              <VideoWithText image="https://picsum.photos/id/634/200/100" text={"बड़े मियां छोटे मियां' की खूब‍ी वाला Ubon SP 12 खरीदना क‍ितना सही?"} />
+              <VideoWithText image="https://picsum.photos/id/645/2000/1000" text={"इस AI टेक्नोलॉजी से फुटबॉल के खेल में आएगा क्रांतिकारी बदलाव"} />
+              <VideoWithText image="https://picsum.photos/id/634/2000/1000" text={"बड़े मियां छोटे मियां' की खूब‍ी वाला Ubon SP 12 खरीदना क‍ितना सही?"} />
             </div>
 
           </div>
