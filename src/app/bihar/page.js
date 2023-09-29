@@ -20,3 +20,8 @@ function Bihar() {
 }
 
 export default Bihar
+
+export const metadata = {
+    title: 'Bihar News - Naxatra News Hindi.com',
+    description: 'Latest Bihar News',
+  }

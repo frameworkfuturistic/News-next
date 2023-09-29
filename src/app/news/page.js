@@ -20,3 +20,8 @@ const News = () => {
 }
 
 export default News
+
+export const metadata = {
+    title: 'Latest News - Naxatra News Hindi.com',
+    description: 'Latest Bihar News',
+  }

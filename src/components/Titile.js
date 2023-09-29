@@ -1,11 +1,11 @@
-import { IoMdArrowDropup } from "react-icons/io";
+import { BiSolidCustomize } from "react-icons/Bi";
 
 const Title = ({ title }) => {
     return (
         <>
-            <div className="flex items-center">
-                <IoMdArrowDropup size={30} color="sky" />
-                <p className="font-semibold">{title}</p>
+            <div className="flex items-center gap-x-1 mb-2">
+                <BiSolidCustomize size={20} color="red" />
+                <p className="font-semibold text-red-600">{title}</p>
             </div>
         </>
     )

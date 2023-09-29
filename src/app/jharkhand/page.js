@@ -18,3 +18,8 @@ const Jharkhand = () => {
 }
 
 export default Jharkhand
+
+export const metadata = {
+    title: 'Jharkhand News - Naxatra News Hindi.com',
+    description: 'Latest Bihar News',
+  }
