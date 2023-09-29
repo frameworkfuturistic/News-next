@@ -23,16 +23,24 @@ export default function Home() {
 
   const textNewsData = [
     { id: 1, type: "video", link: "/news/34/sdfsdf", text: "दमदार हेलमेट... Airbag से लैस खास रेसिंग सूट...पैरो में बूट! किसी योद्धा की तरह ट्रैक पर उतरते हैं MotoGP राइडर्स" },
-    { id: 2, type: "", link: "/news/34", text: "8 साल से कार में रह रहा शख्स, बताया अब तक कौन से फायदे हुए" },
+    { id: 2, type: "text", link: "/news/34", text: "8 साल से कार में रह रहा शख्स, बताया अब तक कौन से फायदे हुए" },
     { id: 3, type: "image", link: "/news/34/tkjserksjer", text: "Asian Games 2023 IND-W Vs BAN-W: क्रिकेट में मिलेगा गोल्ड! बांग्लादेश को हराकर फाइनल में पहुंची टीम इंडिया, अब पाकिस्तान से हो सकती है टक्कर" },
     { id: 4, type: "video", link: "/news/34/jtejkwrthwe", text: "PM मोदी आज 9 वंदे भारत एक्सप्रेस को दिखाएंगे हरी झंडी, इन 11 राज्यों से गुजरेगी हाइटेक ट्रेन" },
+    { id: 5, type: "video", link: "/news/34/jtejkwrthwe", text: "PM मोदी आज 9 वंदे भारत एक्सप्रेस को दिखाएंगे हरी झंडी, इन 11 राज्यों से गुजरेगी हाइटेक ट्रेन" },
+    { id: 6, type: "video", link: "/news/34/jtejkwrthwe", text: "PM मोदी आज 9 वंदे भारत एक्सप्रेस को दिखाएंगे हरी झंडी, इन 11 राज्यों से गुजरेगी हाइटेक ट्रेन" },
+    { id: 7, type: "video", link: "/news/34/jtejkwrthwe", text: "PM मोदी आज 9 वंदे भारत एक्सप्रेस को दिखाएंगे हरी झंडी, इन 11 राज्यों से गुजरेगी हाइटेक ट्रेन" },
+    { id: 8, type: "text", link: "/news/34", text: "8 साल से कार में रह रहा शख्स, बताया अब तक कौन से फायदे हुए" },
   ]
 
   const liveUpdate = [
-    { id: 1, time: "11:30 AM", link: "/news/34wer", news: "26 सितंबर को G20 यूनिवर्सिटी कनेक्ट कार्यक्रम', मन की बात में बोले पीएम मोदी" },
-    { id: 2, time: "11:14 AM", link: "/news/34r/3434", news: "चंद्रयान की सफलता से भारतीयों को गहरा लगाव', मन की बात में बोले पीएम मोदी" },
-    { id: 3, time: "11:04 AM", link: "/news/34/345/345", news: "एशियन गेम्स में भारत की पुरुष हॉकी टीम ने उज्बेकिस्तान को 16-0 से हराया" },
-    { id: 4, time: "11:04 AM", link: "/news/34/jsdfjsdkf", news: "एशियन गेम्स में भारत की पुरुष हॉकी टीम ने उज्बेकिस्तान को 16-0 से हराया" },
+    { id: 1, time: "05:30 AM", link: "/news/34wer", news: "26 सितंबर को G20 यूनिवर्सिटी कनेक्ट कार्यक्रम', मन की बात में बोले पीएम मोदी" },
+    { id: 2, time: "06:14 AM", link: "/news/34r/3434", news: "चंद्रयान की सफलता से भारतीयों को गहरा लगाव', मन की बात में बोले पीएम मोदी" },
+    { id: 3, time: "07:04 AM", link: "/news/34/345/345", news: "एशियन गेम्स में भारत की पुरुष हॉकी टीम ने उज्बेकिस्तान को 16-0 से हराया" },
+    { id: 4, time: "09:04 AM", link: "/news/34/jsdfjsdkf", news: "एशियन गेम्स में भारत की पुरुष हॉकी टीम ने उज्बेकिस्तान को 16-0 से हराया" },
+    { id: 5, time: "10:04 AM", link: "/news/34/345/345", news: "एशियन गेम्स में भारत की पुरुष हॉकी टीम ने उज्बेकिस्तान को 16-0 से हराया" },
+    { id: 6, time: "11:04 AM", link: "/news/34/345/345", news: "एशियन गेम्स में भारत की पुरुष हॉकी टीम ने उज्बेकिस्तान को 16-0 से हराया" },
+    { id: 7, time: "01:30 AM", link: "/news/34wer", news: "26 सितंबर को G20 यूनिवर्सिटी कनेक्ट कार्यक्रम', मन की बात में बोले पीएम मोदी" },
+    { id: 8, time: "01:04 AM", link: "/news/34/345/345", news: "एशियन गेम्स में भारत की पुरुष हॉकी टीम ने उज्बेकिस्तान को 16-0 से हराया" },
   ]
 
   const titleWithImage = [
@@ -40,6 +48,7 @@ export default function Home() {
     { id: 2, link: "/news/34wewr/wer32", text: "मैदान पर तूफान मचाने आ रहा द्रविड़ का बेटा, इस टीम में हुआ सेलेक्शन ", image: "https://picsum.photos/id/222/200/100" },
     { id: 3, link: "/news/34wewr/wer32", text: "रिपीट हुई 'हम दिल दे चुके सनम' की स्टोरी, पति ने पत्नी को प्रेमी संग किया विदा", image: "https://picsum.photos/id/555/200/100" },
     { id: 4, link: "/news/34wewr/wer32", text: "निज्जर की हत्या के बाद खालिस्तानी तत्वों को सावधान कर रहा FBI! न्यूज रिपोर्ट में दावा", image: "https://picsum.photos/id/666/200/100" },
+    { id: 4, link: "/news/34wewr/wer32", text: "निज्जर की हत्या के बाद खालिस्तानी तत्वों को सावधान कर रहा FBI! न्यूज रिपोर्ट में दावा", image: "https://picsum.photos/id/536/200/100" },
   ]
 
   return (
@@ -63,13 +72,30 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-12 m-3">  {/*This is main Grid = Total Grid is 4*/}
 
           <div className="col-span-1 md:col-span-3"> {/*This Grid 1 */}
-            <h1 className={` ${roboto.className} font-semibold text-lg`}>सबूत सौंपने की बात आई तो पैंतरेबाजी पर उतरे ट्रूडो, बोले- कनाडा ने कई सप्ताह पहले भारत को दिए थे साक्ष्य</h1>
-            <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202309/justin_trudeau-sixteen_nine.png?size=948:533" alt="Test Image" />
-            <p>कनाडा के प्रधानमंत्री जस्टिन ट्रूडो भारत को सबूत पेश करने के मामले पैंतरेबाजी कर रहे हैं. ट्रूडो ने अब कहा है कि कनाडा ने कई सप्ताह पहले भारत के साथ...</p>
+            <Title title={"मुख्य समाचार"} />
+            <div>
+              <h1 className={` ${roboto.className} font-semibold text-lg`}>सबूत सौंपने की बात आई तो पैंतरेबाजी पर उतरे ट्रूडो, बोले- कनाडा ने कई सप्ताह पहले भारत को दिए थे साक्ष्य</h1>
+              <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202309/justin_trudeau-sixteen_nine.png?size=948:533" alt="Test Image" />
+              <p>कनाडा के प्रधानमंत्री जस्टिन ट्रूडो भारत को सबूत पेश करने के मामले पैंतरेबाजी कर रहे हैं. ट्रूडो ने अब कहा है कि कनाडा ने कई सप्ताह पहले भारत के साथ...</p>
+            </div>
+            <div>
+              <h1 className={` ${roboto.className} font-semibold text-lg`}>सद्दाम ने ही बनवाए थे उमेशपाल हत्याकांड के आरोपियों के फर्जी दस्तावेज, फिर भाग गया था दुबई</h1>
+              <img src="https://picsum.photos/id/356/200/100" className="w-full" alt="Test Image" />
+              <p>पुलिस के हत्थे चढ़ा सद्दाम केवल अशरफ का रिश्तेदार ही नहीं था बल्कि उसका काम भी संभालता था. अशरफ के जेल जाने के बाद वही बाहर उसका सारा काम काज देखता था...</p>
+            </div>
           </div>
 
           <div className="col-span-1 md:col-span-4"> {/*This Grid 2 */}
             <Title title={"ख़बरें"} />
+            <div className="w-full px-3">
+              <iframe
+                className="w-full h-[13rem] border-2 rounded shadow"
+                src="https://www.youtube.com/embed/rSSDrpK2Pec"
+                title="YouTube Video"
+                frameborder="2"
+                allowfullscreen
+              ></iframe>
+            </div>
             <div className="">
               {
                 titleWithImage?.map((item) => (
