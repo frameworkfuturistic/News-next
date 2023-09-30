@@ -1,4 +1,4 @@
-import { BiSolidCustomize } from "react-icons/Bi";
+import { BiSolidCustomize } from "react-icons/bi";
 
 const Title = ({ title }) => {
     return (
