@@ -24,11 +24,6 @@ const Header1 = () => {
         { id: 11, icon: "abc", title: "धार्मिक", link: "/religious" },
     ]
 
-    const isMenuItemActive = (itemLink) => {
-        const { asPath } = useRouter();
-        console.log(" asPath === itemLink", asPath, itemLink)
-        return asPath === itemLink;
-    };
 
     return (
         <>
@@ -46,7 +41,7 @@ const Header1 = () => {
                                 <Link
                                     key={item.id}
                                     href={item.link}
-                                    className={isMenuItemActive(item.link) ? 'text-yellow-500' : 'hover:text-red-400'}
+                                    className={'hover:text-red-400'}
                                 >
                                     {item.title}
                                 </Link>
