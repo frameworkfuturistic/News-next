@@ -41,7 +41,7 @@ const Header1 = () => {
                         </div>
 
                         <div className='hidden md:flex items-center px-5 space-x-5 h-10'>
-                            <Image className='bg-white px-1' height={60} src={logo2} />
+                            <Image className='bg-white px-1' height={60} width={90} src={"/logo.png"} />
                             {menuItem?.map((item) => (
                                 <Link
                                     key={item.id}

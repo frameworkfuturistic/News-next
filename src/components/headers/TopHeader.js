@@ -1,22 +1,18 @@
+"use client"
 import React from 'react'
 import Container from '../Container'
+import { useRouter } from 'next/navigation'
 
 const TopHeader = () => {
 
+    const router = useRouter()
+
     const data = [
-        { id: 1, text: "Aaj Tak", link: "/#" },
-        { id: 2, text: "বাংলা", link: "/#" },
-        { id: 3, text: "Aaj Tak Campus", link: "/#" },
-        { id: 4, text: "GNTTV", link: "/#" },
-        { id: 5, text: "iChowk", link: "/#" },
-        { id: 6, text: "Lallantop", link: "/#" },
-        { id: 7, text: "India Today", link: "/#" },
-        { id: 8, text: "Business Today", link: "/#" },
-        { id: 9, text: "Web3Cafe", link: "/#" },
-        { id: 10, text: "BT Bazaar", link: "/#" },
-        { id: 11, text: "DailyO", link: "/#" },
-        { id: 12, text: "Cosmopolitan", link: "/#" },
-        { id: 13, text: "Harper's Bazaar", link: "/#" },
+        { id: 1, text: "About Us", link: "/#" },
+        { id: 2, text: "Contact Us", link: "/#" },
+        { id: 3, text: "Privacy Policy", link: "/#" },
+        { id: 4, text: "Live Channel", link: "/#" },
+
     ]
 
     return (
@@ -32,7 +28,7 @@ const TopHeader = () => {
                             }
                         </div>
                         <div>
-                            <button className='border text-white text-sm hover:bg-red-700 shadow bg-red-600 px-5 py-1'>Login</button>
+                            <button onClick={() => router.push("/login")} className='border text-white text-sm hover:bg-red-700 shadow bg-red-600 px-5 py-1'>Login</button>
                         </div>
                     </div>
                 </Container>
