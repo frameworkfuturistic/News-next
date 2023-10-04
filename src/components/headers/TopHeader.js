@@ -12,7 +12,7 @@ const TopHeader = () => {
         { id: 1, text: "Home", link: "/" },
         { id: 2, text: "About Us", link: "/#" },
         { id: 3, text: "Contact Us", link: "/#" },
-        { id: 4, text: "Live Channel", link: "/#" },
+        { id: 4, text: "Jobs", link: "/jobs" },
 
     ]
 
@@ -23,9 +23,9 @@ const TopHeader = () => {
                     <div className='flex justify-between items-center'>
                         <div className='flex text-xs my-3 mx-3 font-medium space-x-2 md:space-x-5 whitespace-nowrap'>
                             {
-                                data?.map((item) => {
-                                    return <Link href={item.link} key={item.id} className='cursor-pointer hover:text-black'>{item.text}</Link>
-                                })
+                                data?.map((item) => (
+                                     <Link href={item.link} key={item.id} className='cursor-pointer hover:text-black'>{item.text}</Link>
+                                ))
                             }
                         </div>
                         <div>
