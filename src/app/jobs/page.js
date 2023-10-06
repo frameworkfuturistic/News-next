@@ -24,8 +24,8 @@ const JobList = () => {
                     <div className='text-center text-2xl font-semibold uppercase'>List of job openings</div>
 
                     {
-                        jobList?.map((item) => (
-                            <div onClick={() => handleClick(item.link)} className='border p-2 m-5 rounded shadow-md hover:bg-gray-50 cursor-pointer'>
+                        jobList?.map((item, index) => (
+                            <div key={index} onClick={() => handleClick(item.link)} className='border p-2 m-5 rounded shadow-md hover:bg-gray-50 cursor-pointer'>
                                 <p className='float-right'><button className=' bg-indigo-600 text-white px-3 py-1 rounded shadow text-sm'>Apply Now</button></p>
                                 <p className='text-2xl font-semibold'>{item?.jobTitle}</p>
                                 <p>{item?.jobDescription}</p>
