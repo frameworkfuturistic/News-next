@@ -1,85 +1,170 @@
 "use client"
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 // import { ArrowRight } from 'lucide-react'\
 import { BsArrowRightCircle } from 'react-icons/bs'
+import { useRouter } from 'next/navigation'
 
-export function Login() {
+import React, { useEffect, useState } from 'react'
+import { useFormik, Formik, Form, ErrorMessage } from 'formik'
+import * as yup from 'yup'
+// import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+// import ApiList from '../../Components/APIs/ApiList'
+// import AuthIndex from '../../Components/Auth/AuthIndex'
+import { RotatingLines } from 'react-loader-spinner'
+import ApiList from '@/components/Auth/ApiList'
+import AuthIndex from '@/components/Auth/AuthIndex'
+
+
+const Login = (props) => {
     const [loading, setLoading] = useState(false)
+    const [message, setMessage] = useState({})
 
     const router = useRouter()
 
-    const handleLogin = () => {
+    const { api_login } = ApiList();
+
+    const { isLoggedIn, userIs } = AuthIndex();
+
+    // useEffect(() => {
+    //     if (isLoggedIn == true && userIs == "user") navigate("/")
+    //     if (isLoggedIn == true && userIs == "admin") navigate("/admin")
+    // }, [])
+
+    // formik Start
+
+    const validationSchema = yup.object({
+        email: yup.string().required('Require'),
+        password: yup.string().required('Require'),
+    })
+    const initialValues = {
+        email: '',
+        password: '',
+    }
+    const formik = useFormik({
+        initialValues: initialValues,
+        enableReinitialize: true,
+        onSubmit: (values, resetForm) => {
+            console.log("Value.....", values)
+            handleLogin(values)
+        },
+        validationSchema
+    })
+    const handleChange = (event) => {
+        let name = event.target.name
+        let value = event.target.value
+        // { name === 'propertyType' && ((value == '1') ? setpropertyTypeStatusToggle(true) : setpropertyTypeStatusToggle(false)) }
+        // { name == 'mobileNo' && formik.setFieldValue("mobileNo", allowNumberInput(value, formik.values.mobileNo, 10)) }
+    };
+
+    // Formik END
+
+    const handleLogin = (data) => {
+        setMessage()
         setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-            router.push("/admin")
-        }, 3000);
+
+        axios.post(api_login, { "email": data?.email, "password": data?.password })
+            .then((res) => {
+                if (res.data.status) {
+                    setLoading(false)
+                    setMessage({ status: true, message: res.data.message })
+                    console.log("Login Successful", res)
+                    localStorage.setItem("userData", JSON.stringify(res.data.data))
+                    router.push("/admin")
+                } else {
+                    setMessage({ status: false, message: res.data.message })
+                    setLoading(false)
+                    console.log("Invalid Credentials", res)
+                }
+            })
+            .catch((error) => {
+                console.log("Error while login", error)
+                setLoading(false)
+                setMessage({ status: false, message: error.response.data.data })
+            })
     }
 
     return (
-        <section className=' h-max'>
-            <div className="flex items-center justify-center pt-20">
-                <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md bg-white border p-4 rounded-lg shadow-lg">
+        <>
+            <section className="h-screen">
+                <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
 
-                    <h2 className="text-center text-2xl font-bold leading-tight text-black">
-                        Sign in to your account
-                    </h2>
-                    <form className="mt-8">
-                        <div className="space-y-5">
-                            <div>
-                                <label htmlFor="" className="text-base font-medium text-gray-900">
-                                    Email address
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                        type="email"
-                                        placeholder="Email"
-                                    ></input>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="flex items-center justify-between">
-                                    <label htmlFor="" className="text-base font-medium text-gray-900">
-                                        Password
-                                    </label>
-                                    <a href="#" title="" className="text-sm font-semibold text-black hover:underline">
-                                        Forgot password?
-                                    </a>
-                                </div>
-                                <div className="mt-2">
-                                    <input
-                                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                        type="password"
-                                        placeholder="Password"
-                                    ></input>
-                                </div>
-                            </div>
-                            <div>
-
-                                <button
-                                    onClick={handleLogin}
-                                    disabled={loading}
-                                    type="button"
-                                    className="inline-flex disabled:bg-indigo-900 w-full items-center justify-center rounded-md bg-indigo-600 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-indigo-700"
-                                >
-                                    {
-                                        loading ?
-                                            <span className="loading loading-spinner"></span> :
-                                            <>Login < BsArrowRightCircle className="ml-2" size={16} /></>
+                    <div className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0">
+                        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                            <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
+                                Login
+                            </h1>
+                            <form onSubmit={formik.handleSubmit} onChange={handleChange} className="space-y-4 md:space-y-6">
+                                <div className="space-y-5">
+                                    <div>
+                                        <label
+                                            htmlFor=""
+                                            className="text-base font-medium text-gray-900"
+                                        >
+                                            Email address
+                                        </label>
+                                        <div className="mt-2.5">
+                                            <input
+                                                placeholder="Email"
+                                                className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                                type="email" {...formik.getFieldProps('email')} />
+                                            <p className='text-red-500 text-xs'>{formik.touched.email && formik.errors.email ? formik.errors.email : null}</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="flex items-center justify-between">
+                                            <label
+                                                htmlFor=""
+                                                className="text-base font-medium text-gray-900"
+                                            >
+                                                Password
+                                            </label>
+                                            <span
+                                                onClick={() => navigate('/forgot-password')}
+                                                className="text-sm cursor-pointer font-medium text-indigo-600 hover:underline hover:text-indigo-700 focus:text-indigo-700"
+                                            >
+                                                Forgot password?
+                                            </span>
+                                        </div>
+                                        <div className="mt-2.5">
+                                            <input
+                                                placeholder="Password"
+                                                className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                                type="password" {...formik.getFieldProps('password')} />
+                                            <p className='text-red-500 text-xs'>{formik.touched.password && formik.errors.password ? formik.errors.password : null}</p>
+                                        </div>
+                                    </div>
+                                    {message?.message &&
+                                        <div className={`py-1 text-center text-sm font-medium border rounded ${message?.status ? 'text-green-500 bg-green-100 border-green-400' : 'text-red-500 bg-red-100 border-red-400'} `}>
+                                            {message && message?.message}
+                                        </div>
                                     }
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                                    <div>
+                                        <button type="submit" disabled={loading} className="w-full flex justify-center items-center disabled:bg-gray-400 text-white bg-gray-600 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                            {!loading && "Sign In"}
+                                            <RotatingLines
+                                                strokeColor="white"
+                                                strokeWidth="6"
+                                                animationDuration="0.75"
+                                                width="20"
+                                                visible={loading}
+                                            />
+                                        </button>
+                                        {/* <p className="text-sm font-light text-gray-500 ">
+                                            Don't have account ? <span onClick={() => navigate('/register')} className="font-medium text-gray-600 hover:underline cursor-pointer">Sign Up</span>
+                                        </p> */}
+                                    </div>
+                                </div>
+                            </form>
 
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </ section>
+
+        </>
     )
 }
-
-
 export default Login
