@@ -1,18 +1,11 @@
 "use client"
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-// import React, { useState } from 'react'
-// import { ArrowRight } from 'lucide-react'\
 import { BsArrowRightCircle } from 'react-icons/bs'
-import { useRouter } from 'next/navigation'
-
 import React, { useEffect, useState } from 'react'
 import { useFormik, Formik, Form, ErrorMessage } from 'formik'
 import * as yup from 'yup'
-// import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-// import ApiList from '../../Components/APIs/ApiList'
-// import AuthIndex from '../../Components/Auth/AuthIndex'
 import { RotatingLines } from 'react-loader-spinner'
 import ApiList from '@/components/Auth/ApiList'
 import AuthIndex from '@/components/Auth/AuthIndex'
@@ -71,7 +64,7 @@ const Login = (props) => {
                     setLoading(false)
                     setMessage({ status: true, message: res.data.message })
                     console.log("Login Successful", res)
-                    localStorage.setItem("userData", JSON.stringify(res.data.data))
+                    // window.localStorage.setItem("userData", JSON.stringify(res.data.data))
                     router.push("/admin")
                 } else {
                     setMessage({ status: false, message: res.data.message })

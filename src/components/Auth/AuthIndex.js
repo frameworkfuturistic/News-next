@@ -4,8 +4,9 @@ const AuthIndex = () => {
 
     const secretKey = 'mysecretkey';
 
-    const userData = localStorage.getItem("userData")
+    // const userData = windows.localStorage.getItem("userData")
 
+    let userData;
     let data;
     if (userData) {
         try {

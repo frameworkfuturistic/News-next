@@ -7,7 +7,8 @@ export default function ApiList() {
 
 
 
-    let token = window.localStorage.getItem('userData')
+    // let token = window?.localStorage.getItem('userData')
+    let token = "";
     const header = {
         headers:
         {
