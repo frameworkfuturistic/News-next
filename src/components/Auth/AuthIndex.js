@@ -6,6 +6,15 @@ const AuthIndex = () => {
 
     // const userData = windows.localStorage.getItem("userData")
 
+    let token = "";
+    const header = {
+        headers:
+        {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json',
+        }
+    }
+
     let userData;
     let data;
     if (userData) {
@@ -36,7 +45,8 @@ const AuthIndex = () => {
         token: data?.token,
         isLoggedIn: true,
         userIs: type,
-        userImg: data?.userImg
+        userImg: data?.userImg,
+        header: header
     }
 
     return myData;

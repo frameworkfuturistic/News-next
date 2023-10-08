@@ -64,8 +64,8 @@ const Login = (props) => {
                     setLoading(false)
                     setMessage({ status: true, message: res.data.message })
                     console.log("Login Successful", res)
-                    // window.localStorage.setItem("userData", JSON.stringify(res.data.data))
-                    router.push("/admin")
+                    window.localStorage.setItem("userData", JSON.stringify(res.data.data))
+                    router.push("/admin/dashboard")
                 } else {
                     setMessage({ status: false, message: res.data.message })
                     setLoading(false)

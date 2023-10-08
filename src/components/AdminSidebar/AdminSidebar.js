@@ -18,16 +18,13 @@ export function AdminSidebar() {
             id: 1, title: "Dashboard", link: "/admin/dashboard", icon: TbGauge, subMenu: []
         },
         {
-            id: 2, title: "Message Template", link: "/template", icon: TbMailQuestion, subMenu: [
-                { id: 1, title: "Show List", link: "/template", icon: TbLayoutList },
-                { id: 2, title: "Add New", link: "/template/add", icon: TbUserPlus },
+            id: 2, title: "News List", link: "#", icon: TbMailQuestion, subMenu: [
+                { id: 1, title: "Show List", link: "#", icon: TbLayoutList },
+                { id: 2, title: "Add New", link: "#", icon: TbUserPlus },
             ]
         },
         {
-            id: 3, title: "Contact", link: "/contact", icon: AiFillContacts, subMenu: [
-                { id: 1, title: "Contact", link: "/contact", icon: TbLayoutList },
-
-            ]
+            id: 3, title: "Log Out", link: "/login", icon: AiFillContacts, subMenu: []
         },
 
     ]
@@ -36,7 +33,7 @@ export function AdminSidebar() {
         <>
 
             <div className={`z-50 ${mobileSidebarOpen ? 'block' : 'hidden'} md:block absolute md:relative `}>
-                <div className="flex h-screen w-64 flex-col overflow-y-auto border-r bg-black px-5">
+                <div className="flex h-screen w-64 flex-col overflow-y-auto border-r bg-indigo-900 px-5">
                     <div>
 
                         <p onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)} className='absolute -right-6 cursor-pointer md:hidden'><BiChevronLeftCircle color='black' /></p>
