@@ -1,12 +1,17 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormik, Formik, Form, ErrorMessage } from 'formik'
 import * as yup from 'yup'
 import DataTable1 from '@/components/datatable/DataTable1'
 import { FiEdit3 } from 'react-icons/fi'
 import { BsTrash2 } from 'react-icons/bs'
+import axios from 'axios'
+import ApiList from '@/components/Auth/ApiList'
 
 const AddNewNews = () => {
+    const [categoryData, setCategoryData] = useState();
+
+    const { api_viewAllCategory } = ApiList()
 
     const validationSchema = yup.object({
         searchBy: yup.string().required('Require'),
@@ -36,45 +41,26 @@ const AddNewNews = () => {
     //Category Data
 
     const COLUMNS = [
-
         {
-            Header: 'Category  name',
-            accessor: ({ userName, phoneNo }) =>
-                <div>
-                    <p className='font-semibold capitalize'>{userName}</p>
-                    <p className='text-xs text-gray-600 capitalize'>{phoneNo}</p>
-                </div>,
-            Cell: ({ value }) => (
-                <div>
-                    <p>{value}</p>
-                </div>
-            )
+            Header: "Category Name",
+            accessor: "category",
+            Cell: ({ cell }) => (cell.row.values.category)
         },
-        {
-            Header: "Description",
-            accessor: "listName",
-            Cell: ({ cell }) => (
-                <div className=''>
-                    {cell.row.values.listName ? cell.row.values.listName : <p className=' text-red-700 px-2'>NA</p>}
-                </div>
-            )
-        },
-
         {
             Header: 'Status',
-            accessor: 'category',
+            accessor: 'status',
             Cell: ({ cell }) => (
                 <div className='uppercase text-xs font-bold'>
-                    {cell.row.values.category == 'subscribed' && <p className='bg-green-200 text-green-700 border w-fit px-2'>SUBSCRIBED</p>}
-                    {cell.row.values.category == 'unsubscribed' && <p className='bg-yellow-200 text-yellow-700 border w-fit px-2'>UNSUBSCRIBED</p>}
-                    {!cell.row.values.category && <p className='bg-red-200 text-red-700 border w-fit px-2'>NA</p>}
+                    {cell.row.values.status == 'subscribed' && <p className='bg-green-200 text-green-700 border w-fit px-2'>SUBSCRIBED</p>}
+                    {cell.row.values.status == 'unsubscribed' && <p className='bg-yellow-200 text-yellow-700 border w-fit px-2'>UNSUBSCRIBED</p>}
+                    {!cell.row.values.status && <p className='bg-red-200 text-red-700 border w-fit px-2'>NA</p>}
                 </div>
             )
         },
         {
-            Header: "createdAt",
-            accessor: "created_at",
-            Cell: ({ cell }) => (cell.row.values.created_at)
+            Header: "Created At",
+            accessor: "created_date",
+            Cell: ({ cell }) => (cell.row.values.created_date)
         },
 
         {
@@ -89,9 +75,25 @@ const AddNewNews = () => {
         }
     ]
 
-    const data = [
-        { id: 1, userName: "सबूत सौंपने की बात आई तो पैंतरेबाजी पर उतरे ट्रूडो, बोले- कनाडा ने कई सप्ताह पहले भारत को दिए थे साक्ष्य", phoneNo: "", listName: "Raj Kumar", tag_id: "raj kumar", category: "Any", created_at: "22/02/2022" }
-    ]
+    const fetchCategoryData = () => {
+
+        axios.post(api_viewAllCategory)
+            .then((res) => {
+                if (res.data.status) {
+                    console.log("data", res)
+                    setCategoryData(res?.data?.data)
+                } else {
+                    console.log("Error while fetchong data")
+                }
+            })
+            .catch((err) => {
+                console.log("Error while fetching..", err)
+            })
+    }
+
+    useEffect(() => {
+        fetchCategoryData()
+    }, [])
 
 
     return (
@@ -141,8 +143,8 @@ const AddNewNews = () => {
                     <div className='col-span-8'>
 
                         <div className='border '>
-                            <DataTable1
-                                columns={COLUMNS} data={data} />
+                            {categoryData?.length > 0 && <DataTable1
+                                columns={COLUMNS} data={categoryData} />}
                         </div>
                     </div>
 

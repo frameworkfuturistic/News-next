@@ -15,6 +15,8 @@ export default function ApiList() {
     let apiList = {
         api_login: `${baseUrl}/api/auth/login`,
         api_logout: `${baseUrl}/api/auth/logout`,
+        //cATEGORY
+        api_viewAllCategory: `${baseUrl}/api/crud/category/v1/show`,
 
     }
 
