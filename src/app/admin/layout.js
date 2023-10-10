@@ -4,10 +4,10 @@ export default function AdminRootLayout({ children }) {
     return (
         <html lang="en">
             <body className={"grid grid-cols-12"}>
-                <div className="col-span-3">
+                <div className="col-span-2">
                     <AdminSidebar />
                 </div>
-                <div className="col-span-9">
+                <div className="col-span-10">
                     {children}
                 </div>
 

@@ -18,9 +18,10 @@ export function AdminSidebar() {
             id: 1, title: "Dashboard", link: "/admin/dashboard", icon: TbGauge, subMenu: []
         },
         {
-            id: 2, title: "News List", link: "#", icon: TbMailQuestion, subMenu: [
-                { id: 1, title: "Show List", link: "#", icon: TbLayoutList },
-                { id: 2, title: "Add New", link: "#", icon: TbUserPlus },
+            id: 2, title: "News Post", link: "/admin/news", icon: TbMailQuestion, subMenu: [
+                { id: 1, title: "Show List", link: "/admin/news", icon: TbLayoutList },
+                { id: 2, title: "Add New", link: "/admin/news/add", icon: TbUserPlus },
+                { id: 2, title: "Category", link: "/admin/news/category", icon: TbUserPlus },
             ]
         },
         {
