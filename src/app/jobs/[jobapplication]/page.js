@@ -1,13 +1,4 @@
-// import React from 'react'
 
-// const JobApplication = ({ params }) => {
-//     console.log("jpobs params", params.jobapplication)
-//     return (
-//         <div>JobApplication {params.jobapplication}</div>
-//     )
-// }
-
-// export default JobApplication
 "use client"
 import React, { useState } from 'react'
 import { useFormik, Formik, Form, ErrorMessage } from 'formik'
@@ -20,6 +11,7 @@ import { AiOutlineDelete } from 'react-icons/ai'
 const JobApplication = (props) => {
     const [qualificationData, setQualificationData] = useState([])
     const [searchingData, setSearchingData] = useState(false)
+    
     const validationSchema = yup.object({
         searchBy: yup.string().required('Require'),
         searchText: yup.string().required('Require'),
@@ -43,6 +35,7 @@ const JobApplication = (props) => {
         // { name === 'propertyType' && ((value == '1') ? setpropertyTypeStatusToggle(true) : setpropertyTypeStatusToggle(false)) }
         // { name == 'mobileNo' && formik.setFieldValue("mobileNo", allowNumberInput(value, formik.values.mobileNo, 10)) }
     };
+    
     const searchData = (values) => {
         setSearchingData(true)
         console.log("values", values)
