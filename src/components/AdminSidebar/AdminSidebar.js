@@ -48,8 +48,8 @@ export function AdminSidebar() {
                         <nav className="-mx-3 space-y-2 ">
                             <div className="space-y-2 ">
                                 {
-                                    menu?.map((item) => (
-                                        <>
+                                    menu?.map((item, index) => (
+                                        <div key={index}>
                                             <Link key={item.id} onClick={() => { setMobileSidebarOpen(!mobileSidebarOpen), setShowSubMenu(item.id) }} href={item.link}
 
                                                 className="flex transform items-center rounded-lg px-3 py-2 text-gray-200 transition-colors duration-300 hover:bg-gray-50 hover:text-gray-700" >
@@ -68,7 +68,7 @@ export function AdminSidebar() {
                                                     ))
                                                 }
                                             </div>
-                                        </>
+                                        </div>
                                     ))
 
                                 }

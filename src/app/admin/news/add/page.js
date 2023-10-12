@@ -2,6 +2,7 @@
 import ApiList from '@/components/Auth/ApiList'
 // import AuthIndex from '@/components/Auth/AuthIndex'
 import axios from 'axios'
+import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import ReactQuill from 'react-quill';
@@ -12,6 +13,7 @@ const AddNewNews = () => {
     const [value, setValue] = useState('');
     const [image, setImage] = useState("");
     const inputFile = useRef(null);
+    const [selectedLayout, setSelectedLayout] = useState(1)
 
     const { api_viewAllCategory, api_addCategory } = ApiList()
     // const { header } = AuthIndex();
@@ -75,7 +77,19 @@ const AddNewNews = () => {
                             className='px-2 border w-full h-8 border-gray-300'
                             placeholder='Enter Title Here'
                         />
-                        <ReactQuill theme="snow" value={value} onChange={setValue} className='bg-white w-full h-52' />
+                        <div className=''>
+                            <ReactQuill theme="snow" value={value} onChange={setValue} className='bg-white w-full h-60' />
+                        </div>
+
+                        <div className='mt-10'>
+                            <p className='font-semibold'>Select Layout</p>
+                            <div className='flex justify-between'>
+                                <Image onClick={() => setSelectedLayout(1)} className={`bg-white px-1 border ${selectedLayout == 1 ? 'border-sky-700 border-2' : 'border-sky-200'} cursor-pointer hover:brightness-125`} height={100} width={150} src={"/layouts/layout1.jpg"} />
+                                <Image onClick={() => setSelectedLayout(2)} className={`bg-white px-1 border ${selectedLayout == 2 ? 'border-sky-700 border-2' : 'border-sky-200'} cursor-pointer hover:brightness-125`} height={100} width={150} src={"/layouts/layout2.jpg"} />
+                                <Image onClick={() => setSelectedLayout(3)} className={`bg-white px-1 border ${selectedLayout == 3 ? 'border-sky-700 border-2' : 'border-sky-200'} cursor-pointer hover:brightness-125`} height={100} width={150} src={"/layouts/layout3.jpg"} />
+                                <Image onClick={() => setSelectedLayout(4)} className={`bg-white px-1 border ${selectedLayout == 4 ? 'border-sky-700 border-2' : 'border-sky-200'} cursor-pointer hover:brightness-125`} height={100} width={150} src={"/layouts/layout4.jpg"} />
+                            </div>
+                        </div>
                     </div>
                 </div>
 
