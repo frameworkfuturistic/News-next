@@ -4,7 +4,7 @@ import { AiFillContacts, AiOutlineRight } from 'react-icons/ai'
 import Link from 'next/link'
 import { TbBellRinging, TbGauge, TbLayoutList, TbMailQuestion, TbUserPlus } from 'react-icons/tb'
 import { BiBrush, BiChevronLeftCircle } from 'react-icons/bi'
-import { BsNewspaper } from 'react-icons/bs'
+import { VscFileMedia } from 'react-icons/vsc'
 
 export function AdminSidebar() {
     const [showSubMenu, setShowSubMenu] = useState(false)
@@ -25,7 +25,10 @@ export function AdminSidebar() {
             ]
         },
         {
-            id: 3, title: "Log Out", link: "/login", icon: AiFillContacts, subMenu: []
+            id: 3, title: "Media", link: "/media", icon: VscFileMedia, subMenu: []
+        },
+        {
+            id: 4, title: "Log Out", link: "/login", icon: AiFillContacts, subMenu: []
         },
 
     ]

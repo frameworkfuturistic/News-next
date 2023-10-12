@@ -1,6 +1,6 @@
 "use client"
 import ApiList from '@/components/Auth/ApiList'
-import AuthIndex from '@/components/Auth/AuthIndex'
+// import AuthIndex from '@/components/Auth/AuthIndex'
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai'
@@ -14,7 +14,7 @@ const AddNewNews = () => {
     const inputFile = useRef(null);
 
     const { api_viewAllCategory, api_addCategory } = ApiList()
-    const { header } = AuthIndex();
+    // const { header } = AuthIndex();
 
 
     //Fetch Category Data

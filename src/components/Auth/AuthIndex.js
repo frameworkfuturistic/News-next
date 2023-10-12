@@ -4,8 +4,14 @@ const AuthIndex = () => {
 
     const secretKey = 'mysecretkey';
 
-    const userData = window.localStorage.getItem("userData")
-    const data = JSON.parse(userData)
+    // const userData = window.localStorage.getItem("userData")
+    // const data = JSON.parse(userData)
+    let userData;
+    let data;
+    if (typeof window !== "undefined") {
+        userData = localStorage.getItem("userData") || ""
+        data = JSON.parse(userData);
+    }
 
     const header = {
         headers:
