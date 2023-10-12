@@ -25,7 +25,7 @@ export function AdminSidebar() {
             ]
         },
         {
-            id: 3, title: "Media", link: "/media", icon: VscFileMedia, subMenu: []
+            id: 3, title: "Media", link: "/admin/media", icon: VscFileMedia, subMenu: []
         },
         {
             id: 4, title: "Log Out", link: "/login", icon: AiFillContacts, subMenu: []
