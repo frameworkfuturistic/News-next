@@ -17,6 +17,7 @@ export default function ApiList() {
         api_logout: `${baseUrl}/api/auth/logout`,
         //cATEGORY
         api_viewAllCategory: `${baseUrl}/api/crud/category/v1/show`,
+        api_addCategory: `${baseUrl}/api/crud/category/v1/store`,
 
     }
 

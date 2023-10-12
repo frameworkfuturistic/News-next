@@ -4,27 +4,30 @@ const AuthIndex = () => {
 
     const secretKey = 'mysecretkey';
 
-    // const userData = windows.localStorage.getItem("userData")
+    const userData = window.localStorage.getItem("userData")
+    const data = JSON.parse(userData)
 
-    let token = "";
     const header = {
         headers:
         {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${data?.token}`,
             Accept: 'application/json',
         }
     }
 
-    let userData;
-    let data;
-    if (userData) {
-        try {
-            const encryptedData = JSON.parse(userData || ''); // Provide a default empty string if userData is null
-            data = decryptData(encryptedData, secretKey)
-        } catch (error) {
-            console.log("Catch Error in encryptedData", error)
-        }
-    }
+    console.log(header)
+    console.log(data)
+
+    // let data;
+    // if (userData) {
+    //     try {
+    //         const encryptedData = JSON.parse(userData || ''); // Provide a default empty string if userData is null
+    //         data = decryptData(encryptedData, secretKey)
+    //     } catch (error) {
+    //         console.log("Catch Error in encryptedData", error)
+    //     }
+    // }
+
     let type = null;
     switch (data?.type) {
         case 0:

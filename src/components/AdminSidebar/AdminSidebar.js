@@ -34,9 +34,8 @@ export function AdminSidebar() {
         <>
 
             <div className={`z-50 ${mobileSidebarOpen ? 'block' : 'hidden'} md:block absolute md:relative `}>
-                <div className="flex h-screen w-64 flex-col overflow-y-auto border-r bg-indigo-900 px-5">
+                <div className="flex h-screen flex-col overflow-y-auto border-r bg-indigo-900 px-5">
                     <div>
-
                         <p onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)} className='absolute -right-6 cursor-pointer md:hidden'><BiChevronLeftCircle color='black' /></p>
                         <p className='text-white font-semibold text-lg mt-5 border border-gray-500 p-2 text-center'>Admin</p>
                     </div>

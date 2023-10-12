@@ -7,38 +7,91 @@ import { FiEdit3 } from 'react-icons/fi'
 import { BsTrash2 } from 'react-icons/bs'
 import axios from 'axios'
 import ApiList from '@/components/Auth/ApiList'
+import AuthIndex from '@/components/Auth/AuthIndex'
 
-const AddNewNews = () => {
+const ManageNewsCategory = () => {
     const [categoryData, setCategoryData] = useState();
+    const [addingCategory, setAddingCategory] = useState(false)
 
-    const { api_viewAllCategory } = ApiList()
+    const { api_viewAllCategory, api_addCategory } = ApiList()
+    const { header } = AuthIndex();
 
     const validationSchema = yup.object({
-        searchBy: yup.string().required('Require'),
-        searchText: yup.string().required('Require'),
+        newsCategory: yup.string().required('Require'),
+        newsDescription: yup.string().required('Require'),
     })
     const initialValues = {
-        searchBy: '',
-        searchText: '',
+        newsCategory: '',
+        newsDescription: '',
     }
     const formik = useFormik({
         initialValues: initialValues,
         enableReinitialize: true,
         onSubmit: (values, resetForm) => {
             // console.log("Value.....", values)
-            searchData(values)
+            saveData(values)
         },
         validationSchema
     })
     const handleChange = (event) => {
         let name = event.target.name
         let value = event.target.value
-        // { name === 'propertyType' && ((value == '1') ? setpropertyTypeStatusToggle(true) : setpropertyTypeStatusToggle(false)) }
-        // { name == 'mobileNo' && formik.setFieldValue("mobileNo", allowNumberInput(value, formik.values.mobileNo, 10)) }
     };
 
 
-    //Category Data
+    // Add Category
+    const saveData = (data) => {
+        setAddingCategory(true)
+        let payload = {
+            category: data?.newsCategory,
+            description: data?.newsDescription
+        }
+        console.log(header)
+
+        axios.post(api_addCategory, payload, header)
+            .then((res) => {
+                setAddingCategory(false)
+                if (res.data.status || res.data.authenticated) {
+                    console.log("category added..", res)
+                    fetchCategoryData() // Fetch Category data after adding
+                    setCategoryData(res?.data?.data)
+                } else {
+                    console.log("Error while adding category")
+                }
+            })
+            .catch((err) => {
+                setAddingCategory(false)
+                console.log("Error while adding category..", err)
+            })
+    }
+    // Delete Category
+    const handleDelete = (data) => {
+        setAddingCategory(true)
+        let payload = {
+            category: data?.newsCategory,
+            description: data?.newsDescription
+        }
+        console.log(header)
+
+        axios.post(api_addCategory, payload, header)
+            .then((res) => {
+                setAddingCategory(false)
+                if (res.data.status || res.data.authenticated) {
+                    console.log("category added..", res)
+                    fetchCategoryData() // Fetch Category data after adding
+                    setCategoryData(res?.data?.data)
+                } else {
+                    console.log("Error while adding category")
+                }
+            })
+            .catch((err) => {
+                setAddingCategory(false)
+                console.log("Error while adding category..", err)
+            })
+    }
+
+
+    //Category column
 
     const COLUMNS = [
         {
@@ -75,6 +128,8 @@ const AddNewNews = () => {
         }
     ]
 
+
+    //Fetch Category Data
     const fetchCategoryData = () => {
 
         axios.post(api_viewAllCategory)
@@ -113,8 +168,8 @@ const AddNewNews = () => {
                                         <input
                                             placeholder="Enter Category"
                                             className="h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                            type="text" {...formik.getFieldProps('applicantName')} />
-                                        <p className='text-red-500 text-xs absolute'>{formik.touched.applicantName && formik.errors.applicantName ? formik.errors.applicantName : null}</p>
+                                            type="text" {...formik.getFieldProps('newsCategory')} />
+                                        <p className='text-red-500 text-xs absolute'>{formik.touched.newsCategory && formik.errors.newsCategory ? formik.errors.newsCategory : null}</p>
                                     </div>
                                 </div>
                                 <div className=''>
@@ -126,15 +181,15 @@ const AddNewNews = () => {
                                             placeholder="Enter Description"
                                             className=" w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                             rows={3}
-                                            {...formik.getFieldProps('permanentAddress')} />
-                                        <p className='text-red-500 text-xs absolute'>{formik.touched.permanentAddress && formik.errors.permanentAddress ? formik.errors.permanentAddress : null}</p>
+                                            {...formik.getFieldProps('newsDescription')} />
+                                        <p className='text-red-500 text-xs absolute'>{formik.touched.newsDescription && formik.errors.newsDescription ? formik.errors.newsDescription : null}</p>
                                     </div>
                                 </div>
 
                             </div>
                             <div className='flex justify-start my-5'>
-                                <button type='submit' className="rounded text-sm bg-blue-400 px-5 py-1 font-normal leading-7 text-white hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-50">
-                                    Add New Category
+                                <button disabled={addingCategory} type='submit' className="rounded text-sm bg-blue-500 px-5 py-1 font-normal leading-7 text-white hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-50">
+                                    {addingCategory ? 'adding' : "Add New Category"}
                                 </button>
                             </div>
                         </form>
@@ -154,4 +209,4 @@ const AddNewNews = () => {
     )
 }
 
-export default AddNewNews
+export default ManageNewsCategory
