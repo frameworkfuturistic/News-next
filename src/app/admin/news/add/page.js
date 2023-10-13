@@ -1,12 +1,13 @@
 "use client"
 import ApiList from '@/components/Auth/ApiList'
-// import AuthIndex from '@/components/Auth/AuthIndex'
+import AuthIndex from '@/components/Auth/AuthIndex'
+import ReactQuillEditor from '@/components/editor/ReactQuillEditor'
 import axios from 'axios'
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai'
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+// import ReactQuill from 'react-quill';
+// import 'react-quill/dist/quill.snow.css';
 
 const AddNewNews = () => {
     const [categoryData, setCategoryData] = useState()
@@ -15,14 +16,14 @@ const AddNewNews = () => {
     const inputFile = useRef(null);
     const [selectedLayout, setSelectedLayout] = useState(1)
 
-    const { api_viewAllCategory, api_addCategory } = ApiList()
-    // const { header } = AuthIndex();
+    const { api_viewAllCategory } = ApiList()
+    const { header } = AuthIndex();
 
 
     //Fetch Category Data
     const fetchCategoryData = () => {
 
-        axios.post(api_viewAllCategory)
+        axios.post(api_viewAllCategory, {})
             .then((res) => {
                 if (res.data.status) {
                     console.log("data", res)
@@ -45,7 +46,7 @@ const AddNewNews = () => {
     }
 
     const onButtonClick = () => {
-        inputFile.current.click();
+        // inputFile.current.click();
     };
 
     const handleFileUpload = e => {
@@ -61,7 +62,6 @@ const AddNewNews = () => {
         }
     };
 
-    console.log(image)
 
 
     return (
@@ -78,7 +78,7 @@ const AddNewNews = () => {
                             placeholder='Enter Title Here'
                         />
                         <div className=''>
-                            <ReactQuill theme="snow" value={value} onChange={setValue} className='bg-white w-full h-60' />
+                            <ReactQuillEditor theme="snow" value={value} onChange={setValue} className='bg-white w-full h-60' />
                         </div>
 
                         <div className='mt-10'>

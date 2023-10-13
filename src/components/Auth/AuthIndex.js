@@ -16,7 +16,7 @@ const AuthIndex = () => {
     const header = {
         headers:
         {
-            Authorization: `Bearer ${data?.token}`,
+            Authorization: `Bearer ${data?.token || 'abcde'}`,
             Accept: 'application/json',
         }
     }
